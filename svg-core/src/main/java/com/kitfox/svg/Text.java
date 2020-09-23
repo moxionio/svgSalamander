@@ -289,7 +289,9 @@ public class Text extends ShapeElement
         if (font == null)
         {
             Logger.getLogger(Text.class.getName()).log(Level.WARNING, "Could not create font " + fontFamily);
-            font = FontSystem.createFont("Serif", fontStyle, fontWeight, fontSize);
+            // Moxion: We prefer to fail hard to prevent issues with inconsistent SVG rendering
+            throw new RuntimeException("Unable to create font " + fontFamily);
+            //font = FontSystem.createFont("Serif", fontStyle, fontWeight, fontSize);
         }
         
         GeneralPath textPath = new GeneralPath();

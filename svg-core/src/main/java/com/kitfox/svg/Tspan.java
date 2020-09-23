@@ -237,7 +237,9 @@ public class Tspan extends ShapeElement
 
         if (font == null)
         {
-            font = FontSystem.createFont("Serif", fontStyle, fontWeight, fontSize);
+            // Moxion: We prefer to fail hard to prevent issues with inconsistent SVG rendering
+            throw new RuntimeException("Unable to create font " + fontFamily);
+            //font = FontSystem.createFont("Serif", fontStyle, fontWeight, fontSize);
         }
 
 //        FontFace fontFace = font.getFontFace();
