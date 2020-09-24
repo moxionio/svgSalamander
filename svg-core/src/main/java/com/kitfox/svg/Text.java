@@ -289,6 +289,7 @@ public class Text extends ShapeElement
         if (font == null)
         {
             Logger.getLogger(Text.class.getName()).log(Level.WARNING, "Could not create font " + fontFamily);
+            FontSystem.reloadSysFrontNames();
             font = FontSystem.createFont("Serif", fontStyle, fontWeight, fontSize);
         }
         

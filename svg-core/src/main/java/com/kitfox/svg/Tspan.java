@@ -237,6 +237,7 @@ public class Tspan extends ShapeElement
 
         if (font == null)
         {
+            FontSystem.reloadSysFrontNames();
             font = FontSystem.createFont("Serif", fontStyle, fontWeight, fontSize);
         }
 
