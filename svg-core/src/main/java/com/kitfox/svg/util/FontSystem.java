@@ -66,15 +66,16 @@ public class FontSystem extends Font
     
     public static boolean checkIfSystemFontExists(String fontName)
     {
-        if (sysFontNames.isEmpty())
-        {
-            for (String name: GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames(Locale.ENGLISH))
-            {
-                sysFontNames.add(name);
+        synchronized (sysFontNames) {
+
+            if (sysFontNames.isEmpty()) {
+                for (String name : GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames(Locale.ENGLISH)) {
+                    sysFontNames.add(name);
+                }
             }
+
+            return sysFontNames.contains(fontName);
         }
-        
-        return sysFontNames.contains(fontName);
     }
     
     public static FontSystem createFont(String fontFamily, int fontStyle, int fontWeight, float fontSize)
